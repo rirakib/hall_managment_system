@@ -13,13 +13,13 @@
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>username</h2>
+                <h2>{{session()->get('name')}}</h2>
             </div>
         </div>
         <!-- /menu profile quick info -->
 
         <br />
-        
+
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
@@ -29,7 +29,7 @@
                     </ul>
                 </div>
 
-                <h3>Students</h3>
+                <h3>Student Information</h3>
                 <ul class="nav side-menu">
                     <li><a><i class="fas fa-hourglass"></i> Department <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
@@ -38,69 +38,28 @@
                         </ul>
                     </li>
 
-                    {{-- <li><a><i class="fas fa-book"></i> Subject <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{route('subject.index')}}">Index</a></li>
-                            <li><a href="{{route('subject.create')}}">Create</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fas fa-user-astronaut"></i> Group <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{route('group.index')}}">Index</a></li>
-                            <li><a href="{{route('group.create')}}">Create</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fas fa-user-md"></i> Student type <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{route('student-type.index')}}">Index</a></li>
-                            <li><a href="{{route('student-type.create')}}">Create</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fas fa-clock"></i> Shift <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{route('shift.index')}}">Index</a></li>
-                            <li><a href="{{route('shift.create')}}">Create</a></li>
-                        </ul>
-                    </li>
                     <li><a><i class="fas fa-user-graduate"></i> Student <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{route('student.index')}}">Index</a></li>
                             <li><a href="{{route('student.create')}}">Create</a></li>
                         </ul>
-                    </li> --}}
-                    
-
-
+                    </li>
                 </ul>
             </div>
 
-            {{-- <div class="menu_section">
-                <h3>Official</h3>
+            <div class="menu_section">
+                <h3>Deposit</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fas fa-chalkboard-teacher"></i> Teacher <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fas fa-chalkboard-teacher"></i> Deposite <span
+                                class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{route('teacher.index')}}">Index</a></li>
-                            <li><a href="{{route('teacher.create')}}">Create</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fas fa-chalkboard-teacher"></i> Stafs <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{route('type.index')}}">Stafs type</a></li>
-                            <li><a href="{{route('staf.index')}}">Index</a></li>
-                            <li><a href="{{route('staf.create')}}">Create</a></li>
-                        </ul>
-                    </li>
-
-
-                    <li><a><i class="fas fa-chalkboard-teacher"></i> Attendence <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{route('attendance.student')}}">Student</a></li>
-                            <li><a href="{{route('attendance.teacher')}}">Teacher</a></li>
-                            <li><a href="{{route('attendance.staf')}}">Staf</a></li>
+                            <li><a href="{{route('deposite.ammount.index')}}">Deposite category</a></li>
+                            <li><a href="{{route('deposite.index')}}">Index</a></li>
+                            <li><a href="{{route('deposite.create')}}">Create</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div> --}}
+            </div>
 
 
             <div class="menu_section">
@@ -124,7 +83,7 @@
             <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{route('logout')}}">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
         </div>

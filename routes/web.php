@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DepositeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +22,18 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',[DashboardController::class,'index'])->name('dashboard.index');
 Route::get('/login',[LoginController::class,'index'])->name('login.index');
+Route::post('/login',[LoginController::class,'check'])->name('login.check');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 
-Route::resource('/department',DepartmentController::class,['name'=>'department']);
+
+
+Route::group(['middleware'=>['login_check']],function(){
+    Route::get('/',[DashboardController::class,'index'])->name('dashboard.index');
+    Route::resource('/department',DepartmentController::class,['name'=>'department']);
+    Route::resource('/student',StudentController::class,['name'=>'student']);
+    Route::resource('/deposite',DepositeController::class,['name'=>'deposite']);
+    Route::get('deposite/ammount/index',[DepositeController::class,'depositeIndex'])->name('deposite.ammount.index');
+    Route::post('deposite/ammount/index',[DepositeController::class,'depositeStore'])->name('deposite.ammount.store');
+});

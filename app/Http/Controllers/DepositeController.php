@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+use App\Models\Deposite;
+use App\Models\DepositeType;
 use Illuminate\Http\Request;
 
-class DepartmentController extends Controller
+
+class DepositeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,7 @@ class DepartmentController extends Controller
     public function index()
     {
         //
-        $department = Department::all();
-        return view('backend.department.index',compact('department'));
+        
     }
 
     /**
@@ -26,7 +27,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('backend.department.create');
+        //
+        
     }
 
     /**
@@ -38,22 +40,15 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         //
-        $data = $request->all();
-        $validated = $request->validate([
-           'name' => 'required | unique:departments',
-           'department_code' => 'required | unique:departments' 
-        ]);
-        Department::create($data);
-        return redirect()->back()->with('stutus','Department created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\Deposite  $deposite
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show($id)
     {
         //
     }
@@ -61,10 +56,10 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\Deposite  $deposite
      * @return \Illuminate\Http\Response
      */
-    public function edit(Department $department)
+    public function edit($id)
     {
         //
     }
@@ -73,10 +68,10 @@ class DepartmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\Deposite  $deposite
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -84,14 +79,23 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Department  $department
+     * @param  \App\Models\Deposite  $deposite
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $department = Department::find($id);
-        $department->delete();
-        return redirect()->back()->with('delete','Data has been deleted');
+    }
+
+    public function depositeIndex()
+    {
+        $deptype = DepositeType::all();
+        return view('backend.deposite.index',compact('deptype'));
+    }
+    public function depositeStore(Request $request)
+    {
+        $data = $request->all();
+        DepositeType::create($data);
+        return redirect()->back();
     }
 }

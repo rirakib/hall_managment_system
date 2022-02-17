@@ -31,7 +31,7 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
-                    <form action="" method="post">
+                    <form action="{{route('login.check')}}" method="post">
                         @csrf 
                         <h1 style="font-size:15px">HALLS DINING MANAGMENT</h1>
                         <div>

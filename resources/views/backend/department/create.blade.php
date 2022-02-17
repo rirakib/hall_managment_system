@@ -48,8 +48,8 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    <form id="demo-form2" action="{{route('department.store')}}" method="POST" enctype="multipart/form-data"
-                        data-parsley-validate class="form-horizontal form-label-left">
+                    <form id="demo-form2" action="{{route('department.store')}}" method="POST"
+                        enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
                         @csrf
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department Name <span
@@ -58,8 +58,22 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="name" name="name" required="required"
                                     class="form-control col-md-7 col-xs-12 @error('name') is-invalid @enderror"
-                                    placeholder="Class Name">
+                                    placeholder="Department Name">
                                 @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Department Code <span
+                                    class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="department_code" name="department_code" required="required"
+                                    class="form-control col-md-7 col-xs-12 @error('department_code') is-invalid @enderror"
+                                    placeholder="00">
+                                @error('department_code')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
