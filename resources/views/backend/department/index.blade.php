@@ -79,6 +79,7 @@
 
                                 @foreach($department as $data)
                                 <tr class="even pointer">
+                                    
                                     <td class=" ">{{$data->name}}</td>
                                     <td class=" ">{{$data->department_code}}</td>
                                     <td class=" last">

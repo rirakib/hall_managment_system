@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         //
-        $student = Student::all();
+        $student = Student::Paginate(3);
         
         return view('backend.student.index',compact('student'));
     }

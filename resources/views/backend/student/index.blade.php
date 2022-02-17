@@ -109,7 +109,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    {!! $student->links() !!}
 
                 </div>
             </div>

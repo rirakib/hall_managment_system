@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposite;
 use App\Models\DepositeType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class DepositeController extends Controller
@@ -17,6 +18,16 @@ class DepositeController extends Controller
     public function index()
     {
         //
+        $deposite =  DB::table('deposites')
+        ->join('students', 'students.student_id' , '=', 'deposites.student_id')
+        ->join('deposite_types', 'deposite_types.id' , '=', 'deposites.deposite_type')
+        ->select('deposites.id as deposite_id','students.name as student_name','mobile_number',
+            'deposite_types.name as type','deposite_types.price as price',
+            'deposite_ammount','deposite_date'
+        )
+        // ->orderBy('customers.name', 'desc')
+        ->paginate(3);
+        return view('backend.deposite.index',compact('deposite'));
         
     }
 
@@ -28,7 +39,7 @@ class DepositeController extends Controller
     public function create()
     {
         //
-        
+        return view('backend.deposite.create');
     }
 
     /**
@@ -40,6 +51,9 @@ class DepositeController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        Deposite::create($data);
+        return redirect()->back()->with('stutus','Deposite added successfully');
     }
 
     /**
@@ -90,7 +104,7 @@ class DepositeController extends Controller
     public function depositeIndex()
     {
         $deptype = DepositeType::all();
-        return view('backend.deposite.index',compact('deptype'));
+        return view('backend.deposite.depositecreate',compact('deptype'));
     }
     public function depositeStore(Request $request)
     {
