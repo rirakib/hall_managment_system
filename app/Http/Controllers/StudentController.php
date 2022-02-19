@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -58,6 +59,24 @@ class StudentController extends Controller
         
         $student->save();
         return redirect()->back()->with('stutus','Data created successfullly');
+    }
+
+    public function history($id)
+    {
+        $student = DB::table('students')->
+        where('student_id',$id)
+        ->Join('departments','departments.department_code','=','students.department_code')
+        ->select('students.name as name','departments.name as department_name'
+        ,'students.image as image'
+        )
+        ->first();
+        $report = DB::table('deposites')
+       ->Join('deposite_types','deposite_types.id','=','deposites.deposite_type')
+       ->where('deposites.student_id',$id)
+       ->orderBy('deposites.id','desc')
+       ->paginate(5);
+       
+       return view('backend.student.student_report',compact('student','report'));
     }
 
     /**

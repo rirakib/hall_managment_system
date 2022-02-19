@@ -26,7 +26,7 @@ class DepositeController extends Controller
             'deposite_ammount','deposite_date'
         )
         // ->orderBy('customers.name', 'desc')
-        ->paginate(3);
+        ->paginate(4);
         return view('backend.deposite.index',compact('deposite'));
         
     }

@@ -70,6 +70,7 @@
                                     <th class="column-title">Mobile Number</th>
                                     <th class="column-title">Department</th>
                                     <th class="column-title">Address</th>
+                                    <th class="column-title">History</th>
                                     <th class="column-title">Edit </th>
                                     <th class="column-title no-link last"><span class="nobr">Delete</span>
                                     </th>
@@ -94,6 +95,7 @@
                                     <td class=" ">{{$data->mobile_number}}</td>
                                     <td class=" ">{{$data->department->name}}</td>
                                     <td class=" ">{{$data->address}}</td>
+                                    <td class=" "><a href="{{route('student.history',$data->student_id)}}" class="btn btn-warning">History</a></td>
                                     <td class="a-right a-right"><a href="{{route('student.edit',$data->id)}}" class="btn btn-success">Edit</a></td>
                                     <td class=" last">
                                         <form action="{{route('student.destroy',$data->id)}}" method="POST">

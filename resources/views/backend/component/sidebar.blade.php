@@ -58,6 +58,14 @@
                             <li><a href="{{route('deposite.create')}}">Create</a></li>
                         </ul>
                     </li>
+
+                    <li><a><i class="fas fa-chalkboard-teacher"></i> Report <span
+                                class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{route('report.pending')}}">Pending report</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
 
@@ -90,3 +98,4 @@
         <!-- /menu footer buttons -->
     </div>
 </div>
+

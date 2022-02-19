@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DepositeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,6 @@ Route::group(['middleware'=>['login_check']],function(){
     Route::resource('/deposite',DepositeController::class,['name'=>'deposite']);
     Route::get('deposite/ammount/index',[DepositeController::class,'depositeIndex'])->name('deposite.ammount.index');
     Route::post('deposite/ammount/index',[DepositeController::class,'depositeStore'])->name('deposite.ammount.store');
+    Route::get('report/student/{id}',[StudentController::class,'history'])->name('student.history');
+    Route::get('report/pending',[ReportController::class,'pending'])->name('report.pending');
 });
